@@ -1,0 +1,29 @@
+{
+  "name": "instagrambackend",
+  "version": "1.0.0",
+  "description": "@LuisToro-v and I build an instagram backend api for shared photo viewing.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pitoms/InstagramBackend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pitoms/InstagramBackend/issues"
+  },
+  "homepage": "https://github.com/pitoms/InstagramBackend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
