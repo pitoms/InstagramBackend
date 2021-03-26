@@ -10,16 +10,16 @@ app.get("/", (req, res) => {
   res.send("Here are all fetched images in chronological order");
 });
 
+app.get("/:username", (req, res) => {
+  res.send('Here is HTML of "usernames" profile.');
+});
+
 app.post("/createUser", (req, res) => {
   res.send("User created with req body data.");
 });
 
 app.post("/addPhoto", (req, res) => {
   res.send("Photo added to logged in users photos.");
-});
-
-app.get("/:username", (req, res) => {
-  res.send('Here is HTML of "usernames" profile.');
 });
 
 app.post("/deletePhoto/:photoid", (req, res) => {
