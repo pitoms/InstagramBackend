@@ -1,13 +1,16 @@
-const { pool: pool } = require("./connection.js");
+// const { pool: pool } = require("./connection.js");
 const express = require("express");
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server running at: http://localhost:${PORT}`));
+app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Here are all fetched images in chronological order");
+  console.log(req.body);
+  res.send(`${req.body}Here are all fetched images in chronological order`);
 });
 
 app.get("/:username", (req, res) => {
@@ -15,7 +18,7 @@ app.get("/:username", (req, res) => {
 });
 
 app.post("/createUser", (req, res) => {
-  res.send("User created with req body data.");
+  res.send(`${req.body.username} created.`);
 });
 
 app.post("/addPhoto", (req, res) => {
