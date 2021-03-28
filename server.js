@@ -1,6 +1,11 @@
 // const { pool: pool } = require("./connection.js");
 const express = require("express");
+// const pgPromise = require("pg-promise")();
+// const user = 'postgres';
 
+// // connection to our
+// const db = pgPromise(`postgresql://${user}@localhost:5432/mosaic`);
+const db = require("./db.js")
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -17,8 +22,18 @@ app.get("/:username", (req, res) => {
   res.send('Here is HTML of "usernames" profile.');
 });
 
-app.post("/createUser", (req, res) => {
-  res.send(`${req.body.username} created.`);
+app.post("/createUser", async (req, res) => {
+  // res.send(`${req.body.username} created.`);
+  try{
+    await db.none("INSERT INTO users (name, email, pswd_hash) VALUES (${username},${email}, ${password})", req.body)
+    return res.json({
+      message: 'success'
+    })
+  }
+  catch(err){
+    console.log(err);
+    res.status(500).json(err)
+  }
 });
 
 app.post("/addPhoto", (req, res) => {
