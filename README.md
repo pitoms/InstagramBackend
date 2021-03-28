@@ -4,7 +4,7 @@
 
 # Vision
 
-- Mosaic is a photo sharing application, that removes the visual clutter of comments and likes. The homepage, accesible by any user (non-authenticated & authenticated) displays a mosaic of most recent images on the platform. On hover over an image, it's poster's username is diplayed on the bottom right corner of the photo. Clicking on the username will bring you to mosaic.com/:username, which will also be a mosaic of photos - which have been uploaded by that user.
+- Mosaic is a photo sharing application, that removes the visual clutter of comments and likes. The homepage (accesible by any user non-authenticated & authenticated) displays a mosaic of most recent images on the platform. On hover over an image, it's poster's username is diplayed on the bottom right corner of the photo. Clicking on the username will bring you to mosaic.com/:username. This user's mosaic of photos resembles the home page.
 
 ![img](https://i2.wp.com/css-tricks.com/wp-content/uploads/2011/07/seamless.png?ssl=1)
 
