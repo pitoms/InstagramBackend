@@ -5,7 +5,7 @@ const express = require("express");
 
 // // connection to our
 // const db = pgPromise(`postgresql://${user}@localhost:5432/mosaic`);
-const db = require("./db.js")
+const db = require("./db.js");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -24,19 +24,30 @@ app.get("/:username", (req, res) => {
 
 app.post("/createUser", async (req, res) => {
   // res.send(`${req.body.username} created.`);
-  try{
-    await db.none("INSERT INTO users (name, email, pswd_hash) VALUES (${username},${email}, ${password})", req.body)
+  try {
+    await db.none("INSERT INTO users (name, email, pswd_hash) VALUES (${username},${email}, ${password})", req.body);
     return res.json({
-      message: 'success'
-    })
-  }
-  catch(err){
+      message: "success",
+    });
+  } catch (err) {
     console.log(err);
-    res.status(500).json(err)
+    res.status(500).json(err);
   }
 });
 
-app.post("/addPhoto", (req, res) => {
+app.put("/addPhoto", async (req, res) => {
+  try {
+    await db.none("INSERT INTO photos (user_id, src) VALUES (${user_id},${src})", req.body);
+    return res.json({
+      message: "success",
+    });
+
+    //should add robust validation
+  } catch (err) {
+    console.log(err);
+    // res.status(500).json(err);
+  }
+
   res.send("Photo added to logged in users photos.");
 });
 
