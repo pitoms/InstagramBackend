@@ -19,3 +19,15 @@
 - Adding robustness to endpoints in several identified edge cases.
 
 # API
+
+## DELETE USER http://localhost:3000/deleteUser
+
+## GET Username mosaic http://localhost:3000/:username
+
+## PUT photo to user's mosaic http://localhost:3000/addPhoto
+
+## DELETE photo from user's mosaic http://localhost:3000/deletePhoto/
+
+## GET universal mosaic photos in chronological order http://localhost:3000/
+
+## PUT (Create) new user http://localhost:3000/createUser
