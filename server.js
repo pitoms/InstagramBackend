@@ -1,10 +1,5 @@
 // const { pool: pool } = require("./connection.js");
 const express = require("express");
-// const pgPromise = require("pg-promise")();
-// const user = 'postgres';
-
-// // connection to our
-// const db = pgPromise(`postgresql://${user}@localhost:5432/mosaic`);
 const db = require("./db.js")
 const app = express();
 
@@ -35,6 +30,20 @@ app.post("/createUser", async (req, res) => {
     res.status(500).json(err)
   }
 });
+//Delete user from users table
+app.delete("/deleteUser", async (req,res) => {
+  try{
+      await db.none('DELETE FROM users WHERE id = ${id}', req.body)
+      return res.json({
+        message: 'User Deleted'
+      })
+  }
+  catch(err){
+    console.log(err);
+    res.status(500).json(err)
+  }
+});
+
 
 app.post("/addPhoto", (req, res) => {
   res.send("Photo added to logged in users photos.");
@@ -43,3 +52,5 @@ app.post("/addPhoto", (req, res) => {
 app.post("/deletePhoto/:photoid", (req, res) => {
   res.send("Deleted photo from logged in user.");
 });
+
+
