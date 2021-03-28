@@ -1,4 +1,4 @@
-// const { pool: pool } = require("./connection.js");
+const { pool: pool } = require("./connection.js");
 const express = require("express");
 
 const app = express();
@@ -10,6 +10,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   console.log(req.body);
+  console.log(pool.query("SELECT * FROM USERS"));
   res.send(`${req.body}Here are all fetched images in chronological order`);
 });
 
