@@ -14,7 +14,19 @@ app.get("/", (req, res) => {
   res.send(`${req.body}Here are all fetched images in chronological order`);
 });
 
+// assumes a way to access user row with name
+
 app.get("/:username", (req, res) => {
+  try {
+    await db.none("SELECT * FROM photos WHERE user_id = ${username} LIMIT 10", req.params);
+    return res.json({
+      message: "success",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
   res.send('Here is HTML of "usernames" profile.');
 });
 
