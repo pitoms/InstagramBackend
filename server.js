@@ -19,8 +19,19 @@ app.get("/", async(req, res) => {
   }
 });
 
-app.get("/:username", (req, res) => {
-  res.send('Here is HTML of "usernames" profile.');
+app.get("/:username", async(req, res) => {
+  // res.send('Here is HTML of "usernames" profile.');
+  try{
+    const data = await db.any("SELECT * FROM " +
+                              "(SELECT users.id AS user_id,users.name, " +
+                               "photos.id AS photo_id, photos.src, photos.time_posted FROM PHOTOS " + 
+                               "INNER JOIN USERS ON photos.user_id = users.id)"+
+                               " AS res where name = ${username}",req.params);
+    res.send(data)
+  }
+  catch(err){
+    res.status(500).json(err);
+  }
 });
 
 app.put("/createUser", async (req, res) => {
