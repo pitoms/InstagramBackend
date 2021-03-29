@@ -9,9 +9,14 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running at: http://localhost:${PORT}`));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  console.log(req.body);
-  res.send(`${req.body}Here are all fetched images in chronological order`);
+app.get("/", async(req, res) => {
+  try {
+    const data = await db.any("SELECT * FROM PHOTOS ORDER BY RANDOM() LIMIT 4");
+    res.send(data);
+  }
+  catch(err){
+    res.status(500).json(err);
+  }
 });
 
 app.get("/:username", (req, res) => {
@@ -29,6 +34,7 @@ app.put("/createUser", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+  
 });
 
 //Delete user from users table
