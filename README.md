@@ -10,9 +10,9 @@
 
 - This vision was influenced by a short time constraint, and our inexperience with routing, and node's pg-promise. We learned tons about these exciting technologies, version control and kanban project management.
 
-# Blockers
+# Challenges we faced.
 
-- KnexJS has limited functionality for adding secondary keys. We tried using a second column as a unique key but KnexJS states "there is no unique constraint matching given keys for referenced table "users"
+- KnexJS does not support integer arrays within its DDL.
 
 - Limited information returned from the database when deleting. It would be nice to give some verbose information to the front end.
 
